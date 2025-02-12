@@ -6,7 +6,7 @@ export function useJokes(category?: string) {
 
   const {
     data: joke,
-    isLoading,
+    isFetching,
     error,
   } = useQuery({
     queryKey: ['joke', category],
@@ -31,7 +31,7 @@ export function useJokes(category?: string) {
 
   return {
     joke,
-    isLoading,
+    isFetching,
     error,
     searchJokes: searchMutation.mutate,
     isSearching: searchMutation.isPending,

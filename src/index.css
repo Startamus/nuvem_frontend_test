@@ -24,11 +24,12 @@
 
 @import "tailwindcss";
 
+@theme {
+  --font-display: "Blaka", cursive;
+}
+
 h1 {
-  font-family: "Blaka", cursive;
-  font-size: 4rem;
   font-weight: 700;
-  line-height: 1.2;
   text-transform: uppercase;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }

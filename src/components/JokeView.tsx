@@ -1,5 +1,5 @@
 import { RefreshCw } from "lucide-react";
-import { Joke } from "../types/joke";
+import type { Joke } from "../types/joke";
 import { JokeCard } from "./JokeCard";
 import { ErrorMessage } from "./ErrorMessage";
 

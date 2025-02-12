@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Footer } from "./components/ui/Footer";
 import { useJokes } from "./hooks/useJokes";
-import { Joke } from "./types/joke";
+import type { Joke } from "./types/joke";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { JokeView } from "./components/JokeView";
 import { useShare } from "./hooks/useShare";
@@ -70,7 +70,7 @@ function App() {
         </div>
       )}
       <header className="flex flex-col items-center gap-4">
-        <h1 className="text-5xl font-bold text-red-500 transition-all duration-300 hover:text-5xl md:text-4xl">
+        <h1 className="font-display cursor-default text-center text-6xl font-bold text-red-500 transition-all duration-300 hover:text-5xl sm:text-7xl hover:sm:text-8xl md:text-7xl">
           Chuck Norris Jokes
         </h1>
       </header>

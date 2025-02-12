@@ -1,5 +1,6 @@
+import DOMPurify from "dompurify";
 import { Heart, Share2, Clock, Type } from "lucide-react";
-import { Joke } from "../types/joke";
+import type { Joke } from "../types/joke";
 import { JokerCardSkeleton } from "./ui/JokeSkeleton";
 import { highlightJoke } from "../helpers/highlightJoke";
 
@@ -40,7 +41,7 @@ export function JokeCard({
       ) : (
         <p
           className="mb-4 text-left text-lg font-semibold"
-          dangerouslySetInnerHTML={{ __html: jokeValue }}
+          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(jokeValue) }}
         />
       )}
       <div className="items-center justify-between space-y-4 text-sm text-gray-500 md:space-y-2">

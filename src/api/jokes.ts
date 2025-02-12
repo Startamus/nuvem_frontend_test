@@ -1,6 +1,6 @@
 import { Joke } from "../types/joke";
 
-const API_URL = "https://api.chucknorris.io/jokes";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export async function fetchRandomJoke(category?: string): Promise<Joke> {
   const url = new URL(`${API_URL}/random`);

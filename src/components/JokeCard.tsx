@@ -34,7 +34,7 @@ export function JokeCard({
           <div className="h-4 w-1/2 rounded-md bg-gray-200"></div>
         </div>
       ) : (
-        <p className="mb-4 text-lg font-semibold">{joke.value}</p>
+        <p className="mb-4 text-lg text-left font-semibold">{joke.value}</p>
       )}
       <div className="items-center justify-between space-y-4 text-sm text-gray-500 md:space-y-2">
         <div className="flex items-center justify-between">
@@ -54,9 +54,8 @@ export function JokeCard({
         <div className="flex items-center justify-between md:space-x-4">
           <button
             onClick={onToggleFavorite}
-            className={`flex items-center space-x-1 transition-colors ${
-              isFavorite ? "text-red-500" : "hover:text-red-500"
-            }`}
+            className={`flex items-center space-x-1 transition-colors ${isFavorite ? "text-red-500" : "hover:text-red-500"
+              }`}
           >
             <Heart className={`h-5 w-5 ${isFavorite ? "fill-current" : ""}`} />
             <span>{isFavorite ? "Favorited" : "Favorite"}</span>

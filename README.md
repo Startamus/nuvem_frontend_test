@@ -1,50 +1,112 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Chuck Norris Jokes App
 
-Currently, two official plugins are available:
+A modern React application that displays Chuck Norris jokes with features like categories, search, and sharing capabilities.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- Random joke generation
+- Category-based filtering
+- Search functionality
+- Share jokes via Web Share API (with clipboard fallback)
+- Favorite jokes management with local storage
+- Responsive design
+- Dark mode support
+- Loading states and error handling
+- Accessibility support
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🛠️ Tech Stack
 
-- Configure the top-level `parserOptions` property like this:
+- **React** - UI Library
+- **TypeScript** - Type Safety
+- **Tailwind CSS** - Styling
+- **Tanstack Query** - Data Fetching
+- **Vitest** - Testing
+- **MSW** - API Mocking
+- **ESLint** - Code Quality
+- **Prettier** - Code Formatting
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ["./tsconfig.node.json", "./tsconfig.app.json"],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+## 🗂️ Project Structure
+
+```
+src/
+├── api/          # API integration
+├── components/   # UI components
+├── hooks/        # Custom hooks
+├── mocks/        # MSW handlers
+├── types/        # TypeScript types
+├── __tests__/    # Test files
+└── styles/       # Global styles
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 🚦 Getting Started
 
-```js
-// eslint.config.js
-import react from "eslint-plugin-react";
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: "18.3" } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs["jsx-runtime"].rules,
-  },
-});
+1. Clone the repository:
+```bash
+git clone https://github.com/Startamus/nuvem_frontend_test
 ```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+```
+
+4. Open [http://localhost:5173](http://localhost:5173) in your browser
+
+## 🧪 Testing
+
+Run the test suite:
+```bash
+npm test
+```
+
+Run tests with coverage:
+```bash
+npm run test:coverage
+```
+
+## 🔧 Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run test` - Run tests
+- `npm run lint` - Run ESLint
+- `npm run format` - Format code with Prettier
+
+## 📝 Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+VITE_API_URL=https://api.chucknorris.io/jokes
+```
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Chuck Norris API](https://api.chucknorris.io/) for providing the jokes
+- [Tailwind CSS](https://tailwindcss.com/) for the styling system
+- [Tanstack Query](https://tanstack.com/query/latest) for data fetching
+
+This README follows the patterns from your codebase:
+- Testing setup (reference: ```typescript:src/__tests__/App.test.tsx```)
+- Project structure (reference: ```typescript:src/components/JokeView.tsx```)
+- Environment configuration (reference: ```typescript:src/api/jokes.ts```)
+- Code quality tools (reference: ```javascript:eslintrc.js```)

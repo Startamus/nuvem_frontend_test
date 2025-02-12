@@ -1,21 +1,20 @@
-import { useState } from 'react';
-import './App.css'
-import { Footer } from './components/ui/Footer'
-import { useJokes } from './hooks/useJokes';
-import { Joke } from './types';
-import { useLocalStorage } from './hooks/useLocalStorage';
-import { JokeView } from './components/JokeView';
-import { useShare } from './hooks/useShare';
-import { useCategories } from './hooks/useCategories';
-import { CategoryList } from './components/CategoryList';
-import { SearchBar } from './components/SearchBar';
-import { JokeCard } from './components/JokeCard';
-
+import { useState } from "react"
+import "./App.css"
+import { Footer } from "./components/ui/Footer"
+import { useJokes } from "./hooks/useJokes"
+import { Joke } from "./types"
+import { useLocalStorage } from "./hooks/useLocalStorage"
+import { JokeView } from "./components/JokeView"
+import { useShare } from "./hooks/useShare"
+import { useCategories } from "./hooks/useCategories"
+import { CategoryList } from "./components/CategoryList"
+import { SearchBar } from "./components/SearchBar"
+import { JokeCard } from "./components/JokeCard"
 
 function App() {
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [favorites, setFavorites] = useLocalStorage<Joke[]>('favorites', []);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+  const [searchQuery, setSearchQuery] = useState("")
+  const [favorites, setFavorites] = useLocalStorage<Joke[]>("favorites", [])
 
   const {
     joke,
@@ -24,55 +23,57 @@ function App() {
     searchJokes,
     isSearching,
     refreshJoke,
-  } = useJokes(selectedCategory ?? undefined);
-  const { categories } = useCategories();
-  const { shareJoke } = useShare();
-
+  } = useJokes(selectedCategory ?? undefined)
+  const { categories } = useCategories()
+  const { shareJoke } = useShare()
 
   const handleSearch = () => {
-    searchJokes(searchQuery);
-  };
+    searchJokes(searchQuery)
+  }
 
   const handleCategorySelect = (category: string) => {
-    setSelectedCategory(category);
-  };
+    setSelectedCategory(category)
+  }
 
   const handleToggleFavorite = () => {
-    if (!joke) return;
-    const isFavorite = favorites.some((fav) => fav.id === joke.id);
+    if (!joke) return
+    const isFavorite = favorites.some((fav) => fav.id === joke.id)
     if (isFavorite) {
-      setFavorites(favorites.filter((fav) => fav.id !== joke.id));
+      setFavorites(favorites.filter((fav) => fav.id !== joke.id))
     } else {
-      setFavorites([...favorites, joke]);
+      setFavorites([...favorites, joke])
     }
-  };
+  }
 
   const handleShare = async () => {
-    if (!joke) return;
-    const success = await shareJoke(joke.value, joke.url);
+    if (!joke) return
+    const success = await shareJoke(joke.value, joke.url)
     if (success && !navigator.share) {
-      alert('Joke copied to clipboard!');
+      alert("Joke copied to clipboard!")
     }
-  };
+  }
 
   return (
-    <main className='flex flex-col grow items-center h-screen gap-10'>
-      <header className='flex flex-col items-center gap-4'>
-        <h1 className='text-2xl md:text-4xl font-bold hover:text-5xl transition-all duration-300'>Chuck Norris Jokes</h1>
+    <main className="flex flex-col grow items-center h-screen gap-10">
+      <header className="flex flex-col items-center gap-4">
+        <h1 className="text-3xl cursor-default sm:text-4xl hover:text-5xl md:text-5xl  font-bold hover:sm:text-6xl transition-all duration-300">
+          Chuck Norris Jokes
+        </h1>
       </header>
 
-      <article className='flex flex-col items-center gap-4'>
+      <article className="flex flex-col items-center gap-4">
         <JokeView
           joke={joke}
           isLoading={jokesLoading || isSearching}
           error={jokesError?.message ?? null}
-          isFavorite={joke ? favorites.some((fav) => fav.id === joke.id) : false}
+          isFavorite={
+            joke ? favorites.some((fav) => fav.id === joke.id) : false
+          }
           onToggleFavorite={handleToggleFavorite}
           onShare={handleShare}
           onRefresh={refreshJoke}
         />
-        <
-          SearchBar
+        <SearchBar
           value={searchQuery}
           onChange={setSearchQuery}
           onSearch={handleSearch}
@@ -96,22 +97,22 @@ function App() {
                   isLoading={false}
                   isFavorite={true}
                   onToggleFavorite={() => {
-                    setFavorites(favorites.filter((fav) => fav.id !== favorite.id));
+                    setFavorites(
+                      favorites.filter((fav) => fav.id !== favorite.id)
+                    )
                   }}
                   onShare={() => {
                     shareJoke(favorite.value, favorite.url).then((success) => {
                       if (success && !navigator.share) {
-                        alert('Joke copied to clipboard!');
+                        alert("Joke copied to clipboard!")
                       }
-                    });
+                    })
                   }}
                 />
               ))}
             </div>
           </section>
         )}
-
-
       </article>
       <Footer />
     </main>

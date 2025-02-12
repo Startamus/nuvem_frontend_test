@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { JokerCardSkeleton } from "../ui/jokeSkeleton";
+import { JokerCardSkeleton } from "../ui/JokeSkeleton";
 import { expect, describe, it } from "vitest";
 
 describe("JokeCardSkeleton", () => {
@@ -12,7 +12,9 @@ describe("JokeCardSkeleton", () => {
 
   it("applies responsive classes correctly", () => {
     render(<JokerCardSkeleton />);
-    const mobileOnlyPlaceholder = screen.getByTestId("skeleton-placeholder-mobile");
+    const mobileOnlyPlaceholder = screen.getByTestId(
+      "skeleton-placeholder-mobile",
+    );
     expect(mobileOnlyPlaceholder).toHaveClass("sm:hidden");
   });
-}); 
+});

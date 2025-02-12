@@ -21,7 +21,7 @@ export function JokeCard({ joke, isLoading, isFavorite, onToggleFavorite, onShar
           <div className="h-4 bg-gray-200 rounded-md w-1/2"></div>
         </div>
       ) : (
-        <p className="text-lg text-gray-800 mb-4">{joke.value}</p>
+        <p className="text-lg font-semibold mb-4">{joke.value}</p>
       )}
       <div className="space-y-4 md:space-y-2 justify-between items-center text-sm text-gray-500">
         <div className="flex items-center justify-between">

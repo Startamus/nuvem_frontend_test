@@ -1,6 +1,6 @@
 export function JokerCardSkeleton() {
   return (
-    <div className="animate-pulse space-y-4">
+    <div className="animate-pulse space-y-4" role="loading">
       <div className="flex flex-col items-center justify-center gap-4">
         <div className="h-4 w-full rounded bg-gray-200 sm:w-3/4 dark:bg-gray-200" />
         <div className="h-4 w-full rounded bg-gray-200 sm:w-1/2 dark:bg-gray-200" />

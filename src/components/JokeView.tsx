@@ -1,4 +1,3 @@
-import React from 'react';
 import { RefreshCw } from 'lucide-react';
 import { Joke } from '../types';
 import { JokeCard } from './JokeCard';
@@ -26,7 +25,7 @@ export function JokeView({
   return (
     <div className="w-full flex flex-col items-center space-y-6">
       {error && <ErrorMessage message={error} />}
-      
+
       {joke && (
         <JokeCard
           joke={joke}

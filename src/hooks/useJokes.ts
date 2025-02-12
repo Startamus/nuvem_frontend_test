@@ -1,5 +1,5 @@
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { fetchRandomJoke, searchJokes } from '../api/jokes';
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { fetchRandomJoke, searchJokes } from "../api/jokes";
 
 export function useJokes(category?: string) {
   const queryClient = useQueryClient();
@@ -9,7 +9,7 @@ export function useJokes(category?: string) {
     isFetching,
     error,
   } = useQuery({
-    queryKey: ['joke', category],
+    queryKey: ["joke", category],
     queryFn: () => fetchRandomJoke(category),
     enabled: true,
     refetchOnWindowFocus: false,
@@ -20,13 +20,13 @@ export function useJokes(category?: string) {
     onSuccess: (jokes) => {
       if (jokes.length > 0) {
         const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
-        queryClient.setQueryData(['joke', category], randomJoke);
+        queryClient.setQueryData(["joke", category], randomJoke);
       }
     },
   });
 
   const refreshJoke = () => {
-    queryClient.invalidateQueries({ queryKey: ['joke', category] });
+    queryClient.invalidateQueries({ queryKey: ["joke", category] });
   };
 
   return {

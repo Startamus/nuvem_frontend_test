@@ -3,14 +3,14 @@ export function useShare() {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: 'Chuck Norris Joke',
+          title: "Chuck Norris Joke",
           text,
           url,
         });
         return true;
       } catch (error) {
-        if (error instanceof Error && error.name !== 'AbortError') {
-          console.error('Error sharing:', error);
+        if (error instanceof Error && error.name !== "AbortError") {
+          console.error("Error sharing:", error);
         }
         return false;
       }
@@ -19,7 +19,7 @@ export function useShare() {
         await navigator.clipboard.writeText(text);
         return true;
       } catch (error) {
-        console.error('Error copying to clipboard:', error);
+        console.error("Error copying to clipboard:", error);
         return false;
       }
     }

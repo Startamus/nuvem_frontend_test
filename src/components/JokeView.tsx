@@ -1,7 +1,7 @@
-import { RefreshCw } from 'lucide-react';
-import { Joke } from '../types/joke';
-import { JokeCard } from './JokeCard';
-import { ErrorMessage } from './ErrorMessage';
+import { RefreshCw } from "lucide-react";
+import { Joke } from "../types/joke";
+import { JokeCard } from "./JokeCard";
+import { ErrorMessage } from "./ErrorMessage";
 
 interface JokeViewProps {
   joke: Joke | undefined;
@@ -23,7 +23,7 @@ export function JokeView({
   onRefresh,
 }: JokeViewProps) {
   return (
-    <div className="w-full flex flex-col items-center space-y-6">
+    <div className="flex w-full flex-col items-center space-y-6">
       {error && <ErrorMessage message={error} />}
 
       {joke && (
@@ -38,11 +38,10 @@ export function JokeView({
 
       <button
         onClick={onRefresh}
-        className="flex items-center space-x-2 px-6 py-3 bg-blue-500 hover:bg-blue-600 
-                 text-white rounded-lg transition-colors duration-200"
+        className="flex items-center space-x-2 rounded-lg bg-blue-500 px-6 py-3 text-white transition-colors duration-200 hover:bg-blue-600"
         disabled={isLoading}
       >
-        <RefreshCw className={`w-5 h-5 ${isLoading ? 'animate-spin' : ''}`} />
+        <RefreshCw className={`h-5 w-5 ${isLoading ? "animate-spin" : ""}`} />
         <span>Get New Joke</span>
       </button>
     </div>

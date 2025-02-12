@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
-import { fetchCategories } from '../api/jokes';
+import { useQuery } from "@tanstack/react-query";
+import { fetchCategories } from "../api/jokes";
 
 export function useCategories() {
   const {
@@ -7,7 +7,7 @@ export function useCategories() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ['categories'],
+    queryKey: ["categories"],
     queryFn: fetchCategories,
   });
 

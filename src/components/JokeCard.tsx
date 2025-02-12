@@ -1,5 +1,6 @@
-import { Heart, Share2, Clock, Type } from 'lucide-react';
-import { Joke } from '../types/joke';
+import { Heart, Share2, Clock, Type } from "lucide-react";
+import { Joke } from "../types/joke";
+import { JokerCardSkeleton } from "./ui/jokeSkeleton";
 
 interface JokeCardProps {
   joke: Joke;
@@ -9,51 +10,64 @@ interface JokeCardProps {
   onShare: () => void;
 }
 
-export function JokeCard({ joke, isLoading, isFavorite, onToggleFavorite, onShare }: JokeCardProps) {
-  const readingTime = Math.ceil(joke.value.split(' ').length / 200);
+export function JokeCard({
+  joke,
+  isLoading,
+  isFavorite,
+  onToggleFavorite,
+  onShare,
+}: JokeCardProps) {
+  const readingTime = Math.ceil(joke.value.split(" ").length / 200);
   const characterCount = joke.value.length;
 
   return (
-    <div className="flex flex-col gap-4 bg-white rounded-xl min-h-40 p-6 shadow-lg transition-all duration-300 max-w-2xl w-full">
+    <div className="flex min-h-40 w-full max-w-2xl flex-col gap-4 rounded-xl bg-white p-6 shadow-lg transition-all duration-300">
+      {!joke.value && (
+        <div className="min-h-40 w-full max-w-2xl rounded-xl bg-white p-6 shadow-lg transition-all duration-300">
+          <JokerCardSkeleton />
+        </div>
+      )}
+
       {isLoading ? (
         <div className="animate-pulse space-y-4">
-          <div className="bg-gray-200 h-4 rounded-md w-3/4"></div>
-          <div className="h-4 bg-gray-200 rounded-md w-1/2"></div>
+          <div className="h-4 w-3/4 rounded-md bg-gray-200"></div>
+          <div className="h-4 w-1/2 rounded-md bg-gray-200"></div>
         </div>
       ) : (
-        <p className="text-lg font-semibold mb-4">{joke.value}</p>
+        <p className="mb-4 text-lg font-semibold">{joke.value}</p>
       )}
-      <div className="space-y-4 md:space-y-2 justify-between items-center text-sm text-gray-500">
+      <div className="items-center justify-between space-y-4 text-sm text-gray-500 md:space-y-2">
         <div className="flex items-center justify-between">
           <button
             onClick={onShare}
-            className="flex items-center space-x-1 hover:text-blue-500 transition-colors"
+            className="flex items-center space-x-1 transition-colors hover:text-blue-500"
           >
-            <Share2 className="w-5 h-5" />
+            <Share2 className="h-5 w-5" />
             <span>Share</span>
           </button>
 
           <div className="flex items-center space-x-1">
-            <Type className="w-4 h-4" />
+            <Type className="h-4 w-4" />
             <span>{characterCount} chars</span>
           </div>
         </div>
         <div className="flex items-center justify-between md:space-x-4">
           <button
             onClick={onToggleFavorite}
-            className={`flex items-center space-x-1 transition-colors ${isFavorite ? 'text-red-500' : 'hover:text-red-500'
-              }`}
+            className={`flex items-center space-x-1 transition-colors ${
+              isFavorite ? "text-red-500" : "hover:text-red-500"
+            }`}
           >
-            <Heart className={`w-5 h-5 ${isFavorite ? 'fill-current' : ''}`} />
-            <span>{isFavorite ? 'Favorited' : 'Favorite'}</span>
+            <Heart className={`h-5 w-5 ${isFavorite ? "fill-current" : ""}`} />
+            <span>{isFavorite ? "Favorited" : "Favorite"}</span>
           </button>
 
           <div className="flex items-center space-x-1">
-            <Clock className="w-4 h-4" />
+            <Clock className="h-4 w-4" />
             <span>{readingTime} min read</span>
           </div>
         </div>
       </div>
-    </div >
+    </div>
   );
 }

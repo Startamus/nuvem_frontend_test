@@ -1,6 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { fetchRandomJoke, searchJokes } from '../api/jokes';
-import { Joke } from '../types';
 
 export function useJokes(category?: string) {
   const queryClient = useQueryClient();
@@ -13,6 +12,7 @@ export function useJokes(category?: string) {
     queryKey: ['joke', category],
     queryFn: () => fetchRandomJoke(category),
     enabled: true,
+    refetchOnWindowFocus: false,
   });
 
   const searchMutation = useMutation({

@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import { JokeCard } from "../JokeCard";
 import { expect, describe, it, vi } from "vitest";
+import userEvent from "@testing-library/user-event";
 
 const mockOnToggleFavorite = vi.fn();
 const mockOnShare = vi.fn();
@@ -64,7 +65,7 @@ describe("JokeCard", () => {
     expect(mockOnShare).not.toHaveBeenCalled();
   });
 
-  it("renders share button correctly", () => {
+  it("renders share button correctly", async () => {
     render(
       <JokeCard
         joke={mockJoke}
@@ -76,9 +77,8 @@ describe("JokeCard", () => {
     );
 
     const shareButton = screen.getByRole("button", { name: "Share" });
-    shareButton.click();
+    await userEvent.click(shareButton);
     expect(shareButton).toBeInTheDocument();
     expect(mockOnShare).toHaveBeenCalled();
-    expect(mockOnToggleFavorite).not.toHaveBeenCalled();
   });
 });

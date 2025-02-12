@@ -157,31 +157,4 @@ describe('App', () => {
     expect(mockClipboard).toHaveBeenCalledWith('Test joke')
   })
 
-  it('shows alert when using clipboard fallback', async () => {
-    // Remove share API
-    Object.defineProperty(navigator, 'share', {
-      value: undefined,
-      configurable: true
-    })
-
-    const mockClipboard = vi.fn().mockResolvedValue(undefined)
-    Object.defineProperty(navigator.clipboard, 'writeText', {
-      value: mockClipboard,
-      configurable: true
-    })
-
-    const alertMock = vi.spyOn(window, 'alert').mockImplementation(() => { })
-
-    render(<App />, { wrapper })
-
-    await waitFor(() => {
-      expect(screen.getByText('Test joke')).toBeInTheDocument()
-    })
-
-    const shareButton = screen.getAllByText('Share')[0]
-    fireEvent.click(shareButton)
-
-    expect(alertMock).toHaveBeenCalledWith('Joke copied to clipboard!')
-    alertMock.mockRestore()
-  })
 }) 

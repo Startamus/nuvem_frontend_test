@@ -16,7 +16,7 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [favorites, setFavorites] = useLocalStorage<Joke[]>('favorites', []);
-
+  const [notification, setNotification] = useState<string | null>(null);
   const {
     joke,
     isLoading: jokesLoading,
@@ -51,12 +51,18 @@ function App() {
     if (!joke) return;
     const success = await shareJoke(joke.value, joke.url);
     if (success && !navigator.share) {
-      alert('Joke copied to clipboard!');
+      setNotification('Joke copied to clipboard!');  // Replace alert with this
+      setTimeout(() => setNotification(null), 3000); // Clear after 3s
     }
   };
 
   return (
     <main className='flex flex-col grow items-center h-screen gap-10'>
+      {notification && (
+        <div role="alert" className="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow">
+          {notification}
+        </div>
+      )}
       <header className='flex flex-col items-center gap-4'>
         <h1 className='text-5xl text-red-500 md:text-4xl font-bold hover:text-5xl transition-all duration-300'>
           Chuck Norris Jokes

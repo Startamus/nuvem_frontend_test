@@ -14,7 +14,7 @@ export function SearchBar({ value, onChange, onSearch }: SearchBarProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="w-full max-w-2xl mb-6">
+    <form data-testid="search-form" onSubmit={handleSubmit} className="w-full max-w-2xl mb-6">
       <div className="relative">
         <input
           type="text"
@@ -26,7 +26,10 @@ export function SearchBar({ value, onChange, onSearch }: SearchBarProps) {
                    focus:ring-2 focus:ring-blue-500 focus:border-transparent
                    transition-colors duration-200"
         />
-        <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+        <Search
+          data-testid="search-icon"
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5"
+        />
       </div>
     </form>
   );

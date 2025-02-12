@@ -14,16 +14,16 @@ export function JokeCard({ joke, isLoading, isFavorite, onToggleFavorite, onShar
   const characterCount = joke.value.length;
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl min-h-40 p-6 shadow-lg transition-all duration-300 max-w-2xl w-full">
+    <div className="bg-white rounded-xl min-h-40 p-6 shadow-lg transition-all duration-300 max-w-2xl w-full">
       {isLoading ? (
         <div className="animate-pulse space-y-4">
-          <div className=" bg-gray-200 h-4 dark:bg-gray-700 rounded w-3/4"></div>
-          <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-1/2"></div>
+          <div className="bg-gray-200 h-4 rounded w-3/4"></div>
+          <div className="h-4 bg-gray-200 rounded w-1/2"></div>
         </div>
       ) : (
         <>
-          <p className="text-lg text-gray-800 dark:text-gray-200 mb-4">{joke.value}</p>
-          <div className="flex-col md:flex-row space-y-4 md:space-y-0 justify-between items-center text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-lg text-gray-800 mb-4">{joke.value}</p>
+          <div className="flex-col md:flex-row space-y-4 md:space-y-0 justify-between items-center text-sm text-gray-500">
             <div className="flex items-center justify-between">
               <button
                 onClick={onToggleFavorite}

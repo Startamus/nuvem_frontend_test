@@ -24,6 +24,6 @@ describe("Footer", () => {
     const link = screen.getByText("api.chucknorris.io");
 
     expect(footer).toHaveClass("mt-12", "text-center", "text-gray-400");
-    expect(link).toHaveClass("text-blue-500", "hover:text-blue-600");
+    expect(link).toHaveClass("text-yellow-500 hover:text-yellow-600");
   });
 });

@@ -53,7 +53,7 @@ describe("useJokes", () => {
 
     await waitFor(() => {
       expect(result.current.joke).toEqual(mockJoke);
-      expect(result.current.isLoading).toBe(false);
+      expect(result.current.isFetching).toBe(false);
       expect(result.current.error).toBeNull();
     });
   });
@@ -67,7 +67,7 @@ describe("useJokes", () => {
     await waitFor(() => {
       // React Query wraps the error in its own structure
       expect(result.current.error).toBeDefined();
-      expect(result.current.isLoading).toBe(true);
+      expect(result.current.isFetching).toBe(true);
       expect(result.current.joke).toBeUndefined();
     });
   });

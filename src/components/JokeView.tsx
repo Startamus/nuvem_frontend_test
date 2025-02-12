@@ -38,7 +38,7 @@ export function JokeView({
 
       <button
         onClick={onRefresh}
-        className="flex items-center space-x-2 rounded-lg bg-blue-500 px-6 py-3 text-white transition-colors duration-200 hover:bg-blue-600"
+        className=" cursor-pointer flex items-center space-x-2 rounded-lg bg-blue-500 px-6 py-3 text-white transition-colors duration-200 hover:bg-blue-600"
         disabled={isLoading}
       >
         <RefreshCw className={`h-5 w-5 ${isLoading ? "animate-spin" : ""}`} />

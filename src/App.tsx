@@ -57,7 +57,7 @@ function App() {
   };
 
   return (
-    <main className='flex flex-col grow items-center gap-10 bg-background'>
+    <main className='flex flex-col grow items-center gap-10 '>
       {notification && (
         <div role="alert" className="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow">
           {notification}

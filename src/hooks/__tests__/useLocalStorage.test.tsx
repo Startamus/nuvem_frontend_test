@@ -32,10 +32,7 @@ describe('useLocalStorage', () => {
   it('should initialize with default value when storage is empty', () => {
     const { result } = renderHook(() => useLocalStorage('testKey', 'default'))
 
-    console.log('Initial Value Test:', {
-      storedValue: result.current[0],
-      mockStorage
-    })
+
 
     expect(result.current[0]).toBe('default')
   })
@@ -45,10 +42,6 @@ describe('useLocalStorage', () => {
 
     const { result } = renderHook(() => useLocalStorage('testKey', 'default'))
 
-    console.log('Load Existing Value Test:', {
-      storedValue: result.current[0],
-      mockStorage
-    })
 
     expect(result.current[0]).toBe('stored value')
   })
@@ -60,10 +53,7 @@ describe('useLocalStorage', () => {
       result.current[1]('new value')
     })
 
-    console.log('Update Value Test:', {
-      storedValue: result.current[0],
-      mockStorage
-    })
+
 
     expect(result.current[0]).toBe('new value')
     expect(JSON.parse(mockStorage['testKey'])).toBe('new value')
@@ -75,11 +65,6 @@ describe('useLocalStorage', () => {
 
     act(() => {
       result.current[1]({ ...complexObject, count: 43 })
-    })
-
-    console.log('Complex Object Test:', {
-      storedValue: result.current[0],
-      mockStorage
     })
 
     expect(result.current[0]).toEqual({ foo: 'bar', count: 43 })
@@ -98,9 +83,6 @@ describe('useLocalStorage', () => {
 
     const { result } = renderHook(() => useLocalStorage('testKey', 'default'))
 
-    console.log('Error Handling Test:', {
-      storedValue: result.current[0]
-    })
 
     expect(result.current[0]).toBe('default')
     expect(consoleSpy).toHaveBeenCalled()
@@ -115,11 +97,6 @@ describe('useLocalStorage', () => {
     const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => { })
 
     const { result } = renderHook(() => useLocalStorage('testKey', 'default'))
-
-    console.log('JSON Parsing Error Test:', {
-      storedValue: result.current[0],
-      mockStorage
-    })
 
     expect(result.current[0]).toBe('default')
     expect(consoleSpy).toHaveBeenCalled()

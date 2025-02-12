@@ -1,5 +1,4 @@
 import { useState } from "react";
-import "./App.css";
 import { Footer } from "./components/ui/Footer";
 import { useJokes } from "./hooks/useJokes";
 import { Joke } from "./types/joke";
@@ -54,8 +53,14 @@ function App() {
     }
   };
 
+  const handleRefreshJoke = () => {
+    refreshJoke();
+    console.log("Limpe");
+    setSearchQuery("");
+  };
+
   return (
-    <main className="flex grow flex-col items-center gap-10">
+    <main className="flex grow flex-col items-center gap-10 p-4">
       {notification && (
         <div
           role="alert"
@@ -74,13 +79,14 @@ function App() {
         <JokeView
           joke={joke}
           isLoading={jokesLoading || isSearching}
+          searchQuery={searchQuery}
           error={jokesError?.message ?? null}
           isFavorite={
             joke ? favorites.some((fav) => fav.id === joke.id) : false
           }
           onToggleFavorite={handleToggleFavorite}
           onShare={handleShare}
-          onRefresh={refreshJoke}
+          onRefresh={handleRefreshJoke}
         />
         <SearchBar
           value={searchQuery}
@@ -94,8 +100,8 @@ function App() {
           onSelectCategory={handleCategorySelect}
         />
         {favorites.length > 0 && (
-          <section className="mt-12">
-            <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+          <section className="mt-12 w-full">
+            <h2 className="mb-4 text-2xl font-bold text-yellow-500">
               Favorite Jokes
             </h2>
             <div className="space-y-4">

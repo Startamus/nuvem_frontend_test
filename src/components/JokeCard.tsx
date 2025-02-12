@@ -1,11 +1,13 @@
 import { Heart, Share2, Clock, Type } from "lucide-react";
 import { Joke } from "../types/joke";
-import { JokerCardSkeleton } from "./ui/jokeSkeleton";
+import { JokerCardSkeleton } from "./ui/JokeSkeleton";
+import { highlightJoke } from "../helpers/highlightJoke";
 
 interface JokeCardProps {
   joke: Joke;
   isLoading: boolean;
   isFavorite: boolean;
+  searchQuery?: string;
   onToggleFavorite: () => void;
   onShare: () => void;
 }
@@ -14,27 +16,32 @@ export function JokeCard({
   joke,
   isLoading,
   isFavorite,
+  searchQuery,
   onToggleFavorite,
   onShare,
 }: JokeCardProps) {
-  const readingTime = Math.ceil(joke.value.split(" ").length / 200);
-  const characterCount = joke.value.length;
+  const jokeValue = highlightJoke(joke.value, searchQuery);
+
+  const readingTime = Math.ceil(jokeValue.split(" ").length / 200);
+  const characterCount = jokeValue.length;
 
   return (
     <div className="flex min-h-40 w-full max-w-2xl flex-col gap-4 rounded-xl bg-white p-6 shadow-lg transition-all duration-300">
-      {!joke.value && (
+      {!jokeValue && (
         <div className="min-h-40 w-full max-w-2xl rounded-xl bg-white p-6 shadow-lg transition-all duration-300">
           <JokerCardSkeleton />
         </div>
       )}
-
       {isLoading ? (
         <div className="animate-pulse space-y-4">
           <div className="h-4 w-3/4 rounded-md bg-gray-200"></div>
           <div className="h-4 w-1/2 rounded-md bg-gray-200"></div>
         </div>
       ) : (
-        <p className="mb-4 text-lg text-left font-semibold">{joke.value}</p>
+        <p
+          className="mb-4 text-left text-lg font-semibold"
+          dangerouslySetInnerHTML={{ __html: jokeValue }}
+        />
       )}
       <div className="items-center justify-between space-y-4 text-sm text-gray-500 md:space-y-2">
         <div className="flex items-center justify-between">
@@ -54,8 +61,9 @@ export function JokeCard({
         <div className="flex items-center justify-between md:space-x-4">
           <button
             onClick={onToggleFavorite}
-            className={`flex items-center space-x-1 transition-colors ${isFavorite ? "text-red-500" : "hover:text-red-500"
-              }`}
+            className={`flex items-center space-x-1 transition-colors ${
+              isFavorite ? "text-red-500" : "hover:text-red-500"
+            }`}
           >
             <Heart className={`h-5 w-5 ${isFavorite ? "fill-current" : ""}`} />
             <span>{isFavorite ? "Favorited" : "Favorite"}</span>

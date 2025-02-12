@@ -1,4 +1,4 @@
-import { Joke } from '../types';
+import { Joke } from '../types/joke';
 
 export async function fetchRandomJoke(category?: string): Promise<Joke> {
   const url = category

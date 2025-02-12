@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './App.css'
 import { Footer } from './components/ui/Footer'
 import { useJokes } from './hooks/useJokes';
-import { Joke } from './types';
+import { Joke } from './types/joke';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { JokeView } from './components/JokeView';
 import { useShare } from './hooks/useShare';
@@ -58,7 +58,7 @@ function App() {
   return (
     <main className='flex flex-col grow items-center h-screen gap-10'>
       <header className='flex flex-col items-center gap-4'>
-        <h1 className='text-2xl md:text-4xl font-bold hover:text-5xl transition-all duration-300'>Chuck Norris Jokes</h1>
+        <h1 className='text-4xl text-red-500 md:text-4xl font-bold hover:text-5xl transition-all duration-300'>Chuck Norris Jokes</h1>
       </header>
 
       <article className='flex flex-col items-center gap-4'>

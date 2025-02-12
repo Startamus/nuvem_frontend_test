@@ -1,10 +1,10 @@
 import { RefreshCw } from 'lucide-react';
-import { Joke } from '../types';
+import { Joke } from '../types/joke';
 import { JokeCard } from './JokeCard';
 import { ErrorMessage } from './ErrorMessage';
 
 interface JokeViewProps {
-  joke: Joke | null;
+  joke: Joke | undefined;
   isLoading: boolean;
   error: string | null;
   isFavorite: boolean;

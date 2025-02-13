@@ -2,6 +2,12 @@
 
 A modern React application that displays Chuck Norris jokes with features like categories, search, and sharing capabilities.
 
+## Deploy
+The project is deployed to AWS Amplify and can be accessed at the following URL:
+```
+https://main.dl9walq0mych2.amplifyapp.com/
+```
+
 ## 🚀 Features
 
 - Random joke generation

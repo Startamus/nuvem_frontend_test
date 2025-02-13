@@ -1,4 +1,4 @@
-import { Joke } from "../types/joke";
+import type { Joke } from "../types/joke";
 
 const API_URL = import.meta.env.VITE_API_URL;
 

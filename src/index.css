@@ -1,16 +1,42 @@
+@font-face {
+  font-family: "Epilogue";
+  src: url("../src/assets/fonts/Epilogue-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Epilogue";
+  src: url("../src/assets/fonts/Epilogue-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Epilogue";
+  src: url("../src/assets/fonts/Epilogue-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Blaka";
+  src: url("../src/assets/fonts/Blaka-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
 @import "tailwindcss";
 
+@theme {
+  --font-display: "Blaka", cursive;
+}
+
 h1 {
-  font-family: "Blaka", cursive;
-  font-size: 4rem;
   font-weight: 700;
-  line-height: 1.2;
   text-transform: uppercase;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 body {
   background-image: url("/public/background.svg");
+  font-family: "Epilogue", sans-serif;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

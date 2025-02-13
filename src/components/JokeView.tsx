@@ -1,5 +1,5 @@
 import { RefreshCw } from "lucide-react";
-import { Joke } from "../types/joke";
+import type { Joke } from "../types/joke";
 import { JokeCard } from "./JokeCard";
 import { ErrorMessage } from "./ErrorMessage";
 
@@ -8,6 +8,7 @@ interface JokeViewProps {
   isLoading: boolean;
   error: string | null;
   isFavorite: boolean;
+  searchQuery?: string;
   onToggleFavorite: () => void;
   onShare: () => void;
   onRefresh: () => void;
@@ -18,6 +19,7 @@ export function JokeView({
   isLoading,
   error,
   isFavorite,
+  searchQuery,
   onToggleFavorite,
   onShare,
   onRefresh,
@@ -31,6 +33,7 @@ export function JokeView({
           joke={joke}
           isLoading={isLoading}
           isFavorite={isFavorite}
+          searchQuery={searchQuery}
           onToggleFavorite={onToggleFavorite}
           onShare={onShare}
         />
@@ -38,7 +41,7 @@ export function JokeView({
 
       <button
         onClick={onRefresh}
-        className=" cursor-pointer flex items-center space-x-2 rounded-lg bg-blue-500 px-6 py-3 text-white transition-colors duration-200 hover:bg-blue-600"
+        className="flex cursor-pointer items-center space-x-2 rounded-lg bg-blue-500 px-6 py-3 text-white transition-colors duration-200 hover:bg-blue-600"
         disabled={isLoading}
       >
         <RefreshCw className={`h-5 w-5 ${isLoading ? "animate-spin" : ""}`} />

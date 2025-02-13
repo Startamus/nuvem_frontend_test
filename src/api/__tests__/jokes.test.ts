@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { fetchRandomJoke, searchJokes, fetchCategories } from "../jokes";
 

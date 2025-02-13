@@ -1,4 +1,3 @@
-
 # Chuck Norris Jokes App
 
 A modern React application that displays Chuck Norris jokes with features like categories, search, and sharing capabilities.
@@ -17,7 +16,6 @@ https://main.dl9walq0mych2.amplifyapp.com/
 - Share jokes via Web Share API (with clipboard fallback)
 - Favorite jokes management with local storage
 - Responsive design
-- Dark mode support
 - Loading states and error handling
 - Accessibility support
 
@@ -48,16 +46,19 @@ src/
 ## 🚦 Getting Started
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/Startamus/nuvem_frontend_test
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -67,11 +68,13 @@ npm run dev
 ## 🧪 Testing
 
 Run the test suite:
+
 ```bash
 npm test
 ```
 
 Run tests with coverage:
+
 ```bash
 npm run test:coverage
 ```
@@ -112,7 +115,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Tanstack Query](https://tanstack.com/query/latest) for data fetching
 
 This README follows the patterns from your codebase:
-- Testing setup (reference: ```typescript:src/__tests__/App.test.tsx```)
-- Project structure (reference: ```typescript:src/components/JokeView.tsx```)
-- Environment configuration (reference: ```typescript:src/api/jokes.ts```)
-- Code quality tools (reference: ```javascript:eslintrc.js```)
+
+- Testing setup (reference: `typescript:src/__tests__/App.test.tsx`)
+- Project structure (reference: `typescript:src/components/JokeView.tsx`)
+- Environment configuration (reference: `typescript:src/api/jokes.ts`)
+- Code quality tools (reference: `javascript:eslintrc.js`)
